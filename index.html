@@ -16,17 +16,17 @@
       background: linear-gradient(135deg, #f0f4ff 0%, #e2ecff 100%);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 60px 20px;
+      padding: 30px 20px;
     }
 
-    .card {
+    .container {
       background: #fff;
       max-width: 800px;
       width: 100%;
       border-radius: 20px;
-      padding: 32px;
+      padding: 30px;
       box-shadow: 0 10px 40px rgba(0, 30, 100, 0.08);
       text-align: center;
     }
@@ -38,53 +38,25 @@
       margin-bottom: 24px;
     }
 
-    .img-box {
+    .image-box {
       width: 100%;
       border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 24px;
     }
 
-    .img-box img {
+    .image-box img {
       width: 100%;
       display: block;
-      object-fit: cover;
-    }
-
-    .url-box {
-      padding: 14px 18px;
-      background: #f7f8fa;
-      border-radius: 12px;
-      font-size: 14px;
-      color: #4e5969;
-      word-break: break-all;
-      border: 1px solid #e5e6eb;
-    }
-
-    .tip {
-      margin-top: 16px;
-      font-size: 13px;
-      color: #86909c;
     }
   </style>
 </head>
 
 <body>
-  <div class="card">
+  <div class="container">
     <div class="title">感谢扩列喵~</div>
-    <div class="img-box">
-      <img id="pic" alt="展示图片">
+    <div class="image-box">
+      <img src="https://你的图片链接.png" alt="图片">
     </div>
-    <div class="url-box" id="link"></div>
-    <div class="tip">图片永久有效，所有人打开均可查看</div>
   </div>
-
-  <script>
-    // 把你的图片链接放在这里
-    const imgUrl = "https://free.boltp.com/2026/04/16/69e065f7af869.webp";
-
-    document.getElementById("pic").src = imgUrl;
-    document.getElementById("link").innerText = imgUrl;
-  </script>
 </body>
 </html>
