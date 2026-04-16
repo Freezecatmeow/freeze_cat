@@ -31,28 +31,29 @@ h1{margin-bottom:20px;color:#333}
     <input type="file" id="fileInput" accept="image/*">
   </div>
   <div id="imgBox"></div>
-  <div class="tip">上传后，所有人打开该网址都能看到这张图</div>
+  <div class="tip">上传后，仅你本地可见；如需所有人可见，请将图片地址写死在代码中</div>
 </div>
 
 <script>
 const STORAGE_KEY = "my_shared_image_url";
 const fileInput = document.getElementById("fileInput");
 const imgBox = document.getElementById("imgBox");
+const IMGBB_KEY = "215c509415f1310d488e62a728f35b98";
 
 // 页面打开时自动显示图片
 window.onload = () => {
   const url = localStorage.getItem(STORAGE_KEY);
-  if (url) imgBox.innerHTML = `<img src="${url}" alt="展示图">`;
+  if(url) imgBox.innerHTML = `<img src="${url}" alt="展示图">`;
 };
 
-// 上传到图床
+// 上传到图床并保存链接
 fileInput.onchange = async (e) => {
   const file = e.target.files[0];
   if (!file) return;
 
   const formData = new FormData();
   formData.append("image", file);
-  formData.append("key", "215c509415f1310d488e62a728f35b98");
+  formData.append("key", IMGBB_KEY);
 
   try {
     const res = await fetch("https://api.imgbb.com/1/upload", {
@@ -63,10 +64,10 @@ fileInput.onchange = async (e) => {
     const url = data.data.url;
 
     localStorage.setItem(STORAGE_KEY, url);
-    imgBox.innerHTML = `<img src="${url}">`;
-    alert("上传成功！现在别人打开也能看到啦");
+    imgBox.innerHTML = `<img src="${url}" alt="共享图片">`;
+    alert("上传成功！仅你本地可见，如需所有人可见，请将url写入代码");
   } catch (err) {
-    alert("上传失败");
+    alert("上传失败，请重试");
   }
 };
 </script>
